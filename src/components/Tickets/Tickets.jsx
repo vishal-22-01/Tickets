@@ -50,13 +50,19 @@ const Tickets = () => {
               <td>
                 <div className="action">
                   <button>
-                    <FaEye />
+                    <i>
+                      <FaEye />
+                    </i>
                   </button>
                   <button>
-                    <FaEdit />
+                    <i>
+                      <FaEdit />
+                    </i>
                   </button>
                   <button>
-                    <MdDelete />
+                    <i>
+                      <MdDelete />
+                    </i>
                   </button>
                 </div>
               </td>

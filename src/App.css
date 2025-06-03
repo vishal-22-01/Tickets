@@ -12,23 +12,21 @@ table {
 }
 table thead th {
   border: 1px solid black;
+  padding: 5px;
+  text-align: center;
 }
 table tbody td {
   border: 1px solid black;
-}
-.comment {
-  /* display: flex;
-    flex-direction: column; */
-  width: 100%;
-  overflow: hidden;
+  padding: 5px;
+  text-align: center;
 }
 .action {
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: space-around;
 }
 button i {
-  font-size: 25px;
+  font-size: 30px;
 }
 .add {
   display: flex;
