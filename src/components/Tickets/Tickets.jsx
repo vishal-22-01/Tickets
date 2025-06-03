@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom"
 
 const Tickets = () => {
   const [data, setData] = useState([]);
@@ -23,10 +24,16 @@ const Tickets = () => {
       });
   }, []);
 
+  const navigate = useNavigate()
+
+  const handleAddButton = (() => {
+    navigate("/tickets/add")
+  })
+
   return (
     <>
       <div className="add">
-        <button>Add</button>
+        <button onClick={handleAddButton}>Add</button>
       </div>
       <table>
         <thead>

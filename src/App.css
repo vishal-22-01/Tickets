@@ -25,6 +25,10 @@ table tbody td {
   align-items: center;
   justify-content: space-around;
 }
+.action button{
+  border: 0;
+  background-color: transparent;
+}
 button i {
   font-size: 30px;
 }
