@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Tickets = () => {
   const [data, setData] = useState([]);
@@ -24,11 +24,36 @@ const Tickets = () => {
       });
   }, []);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleAddButton = (() => {
-    navigate("/tickets/add")
-  })
+  const handleAddButton = () => {
+    navigate("/tickets/add");
+  };
+
+  const handleEditButton = (ticket) => {
+    console.log(ticket);
+
+    navigate(`/tickets/edit/${ticket.id}`);
+  };
+
+  const handleViewButton = (ticket) => {
+    navigate(`/tickets/details/${ticket.id}`);
+  };
+
+  const handleDelete = async (ticket) => {
+    console.log(ticket);
+
+    try {
+      await axios.delete(
+        `http://195.35.8.196:6111/tickets/delete?id=${ticket}`
+      );
+      setData(data.filter((item) => item.id !== ticket));
+
+      console.log("item deleted");
+    } catch (err) {
+      console.log(err, "Not Deleted");
+    }
+  };
 
   return (
     <>
@@ -56,17 +81,17 @@ const Tickets = () => {
               <td>{ele?.title}</td>
               <td>
                 <div className="action">
-                  <button>
+                  <button onClick={() => handleViewButton(ele)}>
                     <i>
                       <FaEye />
                     </i>
                   </button>
-                  <button>
+                  <button onClick={() => handleEditButton(ele)}>
                     <i>
                       <FaEdit />
                     </i>
                   </button>
-                  <button>
+                  <button onClick={() => handleDelete(ele.id)}>
                     <i>
                       <MdDelete />
                     </i>
